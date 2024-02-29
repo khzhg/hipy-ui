@@ -28,9 +28,9 @@ jobs:
           WELCOME: "ssh scp ssh pipelines"
           LASTSSH: "Doing something after copying"
         with:
-         host: ${{ host }}
-         user: ${{ user }}
-         pass: ${{ psd }}
+         host: ${{ secrets.HOST}}
+         user: ${{ secrets.USER }}
+         pass: ${{ secrets.PSD }}
          connect_timeout: 10s
          local: './dashoboard/dist/*' 
          remote: '/srv/www/dist'
