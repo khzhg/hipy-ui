@@ -32,4 +32,4 @@ jobs:
          pass: ${{ psd }}
          connect_timeout: 10s
          local: './DASHBOARD/dist/*' 
-         remote:'/srv/www/dist'
+         remote: '/srv/www/dist'
