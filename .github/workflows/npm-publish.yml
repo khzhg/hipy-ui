@@ -16,7 +16,7 @@ jobs:
           persist-credentials: false
 
       - name: Build
-        run: 
+        run: |
           cd dashboard
           npm i  
           npm run build  
