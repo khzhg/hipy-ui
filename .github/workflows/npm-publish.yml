@@ -26,15 +26,20 @@ jobs:
           NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
   
       # 连接到ssh，并且做一个拷贝操作的action
-      - name: Deploy 🚀
-        uses: cross-the-world/scp-pipeline@master
+      name: deploy
+        uses: easingthemes/ssh-deploy@v2.1.1
         env:
-          WELCOME: "ssh scp ssh pipelines"
-          LASTSSH: "Doing something after copying"
-        with:
-         host: ${{ secrets.HOST}}
-         user: ${{ secrets.USER }}
-         pass: ${{ secrets.PSD }}
-         connect_timeout: 10s
-         local: './dashoboard/dist/*' 
-         remote: '/srv/www/dist'
+          # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
+          SSH_PRIVATE_KEY: ${{ secrets.psd}}
+          # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
+          ARGS: "-avzr --delete" 
+          # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
+          SOURCE: "./dashboard/"
+          # 服务器域名/IP
+          REMOTE_HOST: ${{ secrets.HOST }}
+          # 服务器默认用户名为root
+          REMOTE_USER:  ${{ secrets.USER }}
+          # 目标目录
+          TARGET: '/home/www/dist'
+          # 排除目录
+          EXCLUDE: "/node_modules/"
