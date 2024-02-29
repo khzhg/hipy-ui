@@ -17,8 +17,8 @@ jobs:
 
       - name: Build
         run: 
-          cd dashoboard
-          npm install  
+          cd dashboard
+          npm i  
           npm run build  
   
       # 连接到ssh，并且做一个拷贝操作的action
