@@ -3,7 +3,7 @@ name: DeployServer
 on:
     push:
         branches: [main] #main分支在push的时候会触发
-
+    workflow_dispatch:
 jobs:
     build:
         runs-on: ubuntu-latest #nodejs执行的操作系统
