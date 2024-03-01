@@ -26,33 +26,21 @@ jobs:
           NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
   
       # 连接到ssh，并且做一个拷贝操作的action
-      #- name: deploy
-      #  uses: easingthemes/ssh-deploy@main
-      #  env:
+      - name: deploy
+        uses: easingthemes/ssh-deploy@main
+         env:
           # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
-      #    SSH_PRIVATE_KEY: ${{ secrets.PSD}}
+          SSH_PRIVATE_KEY: ${{ secrets.PSD}}
           # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
-       #   ARGS: "-avzr --delete" 
+          ARGS: "-avzr --delete" 
           # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
-       #   SOURCE: "dashboard/"
+          SOURCE: "dashboard/"
           # 服务器域名/IP
-       #   REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_HOST: ${{ secrets.HOST }}
           # 服务器用户名
-      #    REMOTE_USER:  ${{ secrets.USER }}
+          REMOTE_USER:  ${{ secrets.USER }}
           # 目标目录
-       #   TARGET: '/home/www/dist'
+          TARGET: '/home/www/dist'
           # 排除目录
-        #  EXCLUDE: "/node_modules/"
-      - name: SSH Server Deploy
-        uses: kostya-ten/ssh-server-deploy@v4
-        with:
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-          scp_source: ./dashboard/dist
-          scp_target: /srv
-          before_script: |
-            rm -rf /srv/*
-          after_script: |
-            
+          EXCLUDE: "/node_modules/"
+     
