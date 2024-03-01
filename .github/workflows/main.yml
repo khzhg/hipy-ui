@@ -11,14 +11,4 @@ jobs:
      with:
       key: ${{ secrets.PSD_RASP }}
       known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
-   - name: rsync deployments
-     uses: burnett01/rsync-deployments@4.1
-     with:
-       # 这里是 rsync 的参数 switches: -avzh --delete --exclude="" --include="" --filter=""
-       switches: -avzh
-       path: ~/.ssh
-       remote_path: /home/www/dist/
-       remote_host: ${{ secrets.SSH_HOST}}
-       remote_port: 22
-       remote_user: ${{ secrets.SSH_USER}}
-       remote_key: ${{ secrets.PSD_RASP}}
+  
