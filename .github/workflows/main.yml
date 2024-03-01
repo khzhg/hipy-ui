@@ -26,12 +26,16 @@ jobs:
           NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
   
       # 连接到ssh，并且做一个拷贝操作的action
-      - name: copy file to server
-        uses: appleboy/scp-action@v0.1.7
+      - name: Deploy
+      # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
+        uses: cross-the-world/scp-pipeline@master
+        env:
+         WELCOME: "ssh scp ssh pipelines"
+         LASTSSH: "Doing something after copying"
         with:
          host: ${{ secrets.SSH_HOST }}
-         username: ${{ secrets.SSH_USER }}
-         password: ${{ secrets.PASSWORD}}
-         port: ${{ secrets.PORT }}
-         source: "dashboard/dist/*"
-         target: "/srv/www/dist"
+         user: ${{ secrets.SSH_USER }}
+         pass: ${{ secrets.PASSWORD }}
+         connect_timeout: 10s
+         local: './dist/*'
+         remote: /home/www/dist
