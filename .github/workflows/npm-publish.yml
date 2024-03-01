@@ -49,8 +49,8 @@ jobs:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
-          private_key: ${{ secrets.PSD }}
-          scp_source: dist
+          private_key: ${{ secrets.PSD_RASP }}
+          scp_source: ./dashboard/dist
           scp_target: /srv
           before_script: |
             rm -rf /srv/*
