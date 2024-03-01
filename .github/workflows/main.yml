@@ -29,5 +29,3 @@ jobs:
       - name: Deploy
         run: |
          scp -P {{ secrets.PORT }} -r GITHUB_WORKSPACE/dist/* {{ secrets.SSH_USER}@{{ secrets.SSH_HOST }}:/home/www/dist
-YAMLCopy
-在上面的示例中，当推送到main分支时，工
