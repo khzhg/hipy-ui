@@ -3,7 +3,7 @@ on:
   push: 
     branches: 
       - main # 这里表示push到main分支就会触发流程
-  workflow_dispatch:
+    workflow_dispatch:
   
 jobs:
   build-and-deploy:
@@ -26,7 +26,7 @@ jobs:
           NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
   
       # 连接到ssh，并且做一个拷贝操作的action
-      name: deploy
+      - name: deploy
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
           # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
