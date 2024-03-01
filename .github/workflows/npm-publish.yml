@@ -27,7 +27,7 @@ jobs:
   
       # 连接到ssh，并且做一个拷贝操作的action
       - name: deploy
-        uses: easingthemes/ssh-deploy@v2.1.1
+        uses: easingthemes/ssh-deploy@v2.2.11
         env:
           # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
           SSH_PRIVATE_KEY: ${{ secrets.PSD}}
