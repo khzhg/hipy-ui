@@ -28,4 +28,4 @@ jobs:
       # 连接到ssh，并且做一个拷贝操作的action
       - name: Deploy
         run: |
-         scp -P {{ secrets.PORT }} -r GITHUB_WORKSPACE/dist/* {{ secrets.SSH_USER}@{{ secrets.SSH_HOST }}:/home/www/dist
+         scp -P ${{ secrets.PORT }} -r GITHUB_WORKSPACE/dist/* ${{ secrets.SSH_USER}@${{ secrets.SSH_HOST }}:/home/www/dist
