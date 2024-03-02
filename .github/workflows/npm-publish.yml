@@ -18,15 +18,12 @@ jobs:
       - uses: actions/setup-node@v2 
         with:
           node-version: '18.19.0'
-# 创建前端需要的.env文件
-      - name: Generate .env File
-        run: ｜
-         rm -rf .env.production
-         cat <<EOF>>.env.production
-         ENV='production'
-         VUE_APP_BASE_API='${{ secrets.URL }}/api/v1/'
-         VUE_APP_MEDIA_BASE='${{ secrets.URL }}/media/'
-         EOF
+    # 安装 sed 工具
+      - name: Install Sed Tool (Optional)
+        run: sudo apt update && sudo apt install -y sed
+      
+      - name: Replace Content in .env
+        run: sed -i 's/http://fastapi-vue-api.beginner2020.top/${{ secrets.URL }}/g' dashboard/.env.production
          
       - name: Build
         run: |
