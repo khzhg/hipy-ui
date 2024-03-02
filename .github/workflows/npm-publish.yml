@@ -23,7 +23,7 @@ jobs:
     #    run: sudo apt update && sudo apt install -y sed
       
       - name: Replace Content in .env
-        run: sed -i “s/http:\/\/fastapi-vue-api.beginner2020.top/${{ secrets.URL }}/g” dashboard/.env.production
+        run: sed -i 's/http:\/\/fastapi-vue-api.beginner2020.top/${{ secrets.URL }}/g' dashboard/.env.production
          
       - name: Build
         run: |
