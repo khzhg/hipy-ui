@@ -21,6 +21,7 @@ jobs:
 # 创建前端需要的.env文件
       - name: Generate .env File
         run: ｜
+         rm -rf .env.production
          cat <<EOF>>.env.production
          ENV='production'
          VUE_APP_BASE_API='${{ url }}/api/v1/'
