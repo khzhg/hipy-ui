@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: '18.19.0'
     # 安装 sed 工具
-      - name: Install Sed Tool (Optional)
-        run: sudo apt update && sudo apt install -y sed
+    #  - name: Install Sed Tool (Optional)
+    #    run: sudo apt update && sudo apt install -y sed
       
       - name: Replace Content in .env
-        run: sed -i “1s｜http://fastapi-vue-api.beginner2020.top｜${{ secrets.URL }}｜” dashboard/.env.production
+        run: sed -i “s/http:\/\/fastapi-vue-api.beginner2020.top/${{ secrets.URL }}/g” dashboard/.env.production
          
       - name: Build
         run: |
