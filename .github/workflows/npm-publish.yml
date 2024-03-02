@@ -24,8 +24,8 @@ jobs:
          rm -rf .env.production
          cat <<EOF>>.env.production
          ENV='production'
-         VUE_APP_BASE_API='${{ url }}/api/v1/'
-         VUE_APP_MEDIA_BASE='${{ url }}/media/'
+         VUE_APP_BASE_API='${{ secrets.URL }}/api/v1/'
+         VUE_APP_MEDIA_BASE='${{ secrets.URL }}/media/'
          EOF
          
       - name: Build
@@ -52,4 +52,7 @@ jobs:
          TARGET: '/home/www/dist'
           # 排除目录
          EXCLUDE: "/node_modules/"
-     
+         SCRIPT_BEFORE: |
+            whoami
+         SCRIPT_AFTER: |
+            whoami
