@@ -18,7 +18,15 @@ jobs:
       - uses: actions/setup-node@v2 
         with:
           node-version: '18.19.0'
-
+# 创建前端需要的.env文件
+      - name: Generate .env File
+        run: ｜
+         cat <<EOF>>.env.production
+         ENV='production'
+         VUE_APP_BASE_API='${{ url }}/api/v1/'
+         VUE_APP_MEDIA_BASE='${{ url }}/media/'
+         EOF
+         
       - name: Build
         run: |
           cd dashboard
