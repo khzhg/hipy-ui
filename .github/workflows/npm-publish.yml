@@ -49,3 +49,7 @@ jobs:
          TARGET: '/home/www/dist'
           # 排除目录
          EXCLUDE: "/node_modules/"
+         SCRIPT_BEFORE: |
+          ls known_hosts
+          ssh-keyscan
+         
