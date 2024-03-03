@@ -36,5 +36,7 @@ jobs:
          TARGET: '/home/www/dist'
           # 排除目录
          EXCLUDE: "/node_modules/"
-         SCRIPT_BEFORE: cat ~/.ssh/known_hosts
+         SCRIPT_BEFORE: |
+          mkdir -p ~/.ssh/config
+          echo "UserKnownHostsFile ~/.ssh/known_hosts">~/.ssh/config       
        
