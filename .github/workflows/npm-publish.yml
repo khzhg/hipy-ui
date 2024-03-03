@@ -51,5 +51,4 @@ jobs:
          EXCLUDE: "/node_modules/"
          SCRIPT_BEFORE: |
           ls known_hosts
-          ssh-keyscan
-         
+       
