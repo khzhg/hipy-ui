@@ -26,6 +26,19 @@ jobs:
           NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
   
       # 连接到ssh，并且做一个拷贝操作的action
-      - name: Deploy
-        run: |
-         scp -P 22 -r ./dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/www/dist
+      - name: ssh pipelines
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+           WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.PSD_RASP }}
+          port: ${{ secrets.PORT }}
+          connect_timeout: 10s
+          script: |
+           (rm -rf /home/github/test || true)
+           ls -la  
+           echo $WELCOME 
+           mkdir -p /home/www/dist/test1 && 
+           mkdir -p /home/www/dist/test2
