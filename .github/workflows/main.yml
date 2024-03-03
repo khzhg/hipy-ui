@@ -20,10 +20,10 @@ jobs:
           node-version: '18.19.0'
    # 连接到ssh，并且做一个拷贝操作的action
       - name: deploy
-        uses: easingthemes/ssh-deploy@main
+        uses: easingthemes/ssh-deploy@v2
         env:
          # 本地.ssh文件下的私钥id_rsa，存在secrets的PRIVATE_KEY中
-         SSH_PRIVATE_KEY: ${{ secrets.KEY}}
+         SSH_PRIVATE_KEY: ${{ secrets.KEY_RASP}}
           # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
          ARGS: "-avzr --delete" 
           # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
