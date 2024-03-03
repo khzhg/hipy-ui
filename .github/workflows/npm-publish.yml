@@ -49,7 +49,3 @@ jobs:
          TARGET: '/home/www/dist'
           # 排除目录
          EXCLUDE: "/node_modules/"
-         SCRIPT_BEFORE: |
-            whoami
-         SCRIPT_AFTER: |
-            whoami
