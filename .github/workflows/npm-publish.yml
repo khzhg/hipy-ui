@@ -48,7 +48,7 @@ jobs:
           # 目标目录
          TARGET: '/home/www/dist'
           # 排除目录
-         EXCLUDE: "static,qqqun.jpg"
+        # EXCLUDE: "static,qqqun.jpg"
          SCRIPT_BEFORE: rm -rf /home/www/dist/*
          SCRIPT_AFTER: chmod -R 777 /home/www/dist
 
