@@ -48,8 +48,8 @@ jobs:
           # 目标目录
          TARGET: '/home/www/dist'
           # 排除目录
-         EXCLUDE: "dashboard/dist/static"
-         SCRIPT_BEFORE: |
-          rm -rf /home/www/dist/*
+         EXCLUDE: "static"
+         SCRIPT_BEFORE: rm -rf /home/www/dist/*
+         SCRIPT_AFTER: chmod -R 777 /home/www/dist
 
        
