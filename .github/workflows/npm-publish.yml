@@ -48,9 +48,8 @@ jobs:
           # 目标目录
          TARGET: '/home/www/dist'
           # 排除目录
-         EXCLUDE: "/node_modules/"
+         EXCLUDE: "dashboard/dist/static"
          SCRIPT_BEFORE: |
           rm -rf /home/www/dist/*
-          echo "test"> test.txt
 
        
