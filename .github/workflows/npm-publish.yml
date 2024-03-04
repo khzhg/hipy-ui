@@ -50,6 +50,7 @@ jobs:
           # 排除目录
          EXCLUDE: "/node_modules/"
          SCRIPT_BEFORE: |
-          ls -a
-          mkdir test
+          rm -rf /home/www/dist/*
+          echo "test"> test.txt
+
        
