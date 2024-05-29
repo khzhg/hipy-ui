@@ -1,7 +1,4 @@
 on: 
-  push: 
-    branches: 
-      - main # 这里表示push到main分支就会触发流程
   workflow_dispatch:   
 jobs:
   deploy_job:
