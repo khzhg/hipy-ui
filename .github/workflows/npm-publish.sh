@@ -1,5 +1,8 @@
 on: 
-  workflow_dispatch:   
+  push: 
+    branches: 
+      - main # 这里表示push到main分支就会触发流程
+  workflow_dispatch:     
 jobs:
   deploy_job:
     runs-on: ubuntu-20.04
@@ -18,7 +21,6 @@ jobs:
          npm i
          sed -i 's/http:\/\/fastapi-vue-api.beginner2020.top/${{secrets.URL}}/g' ./.env.production
          NODE_OPTIONS=--openssl-legacy-provider npm run build:prod
-
     # 连接到ssh，并且做一个拷贝操作的action
     - name: deploy
       uses: easingthemes/ssh-deploy@main
@@ -41,9 +43,3 @@ jobs:
        SCRIPT_AFTER: chmod -R 777 /home/www/dist
 
        
-       
-       
-       
-       
-       
-      
