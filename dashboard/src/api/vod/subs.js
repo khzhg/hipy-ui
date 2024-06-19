@@ -32,6 +32,7 @@ export function addRecord(data) {
 
 // 修改
 export function setRecord(id, data) {
+  console.log(data);
   return request({
     url: api_url + '/' + id,
     method: 'put',
@@ -47,3 +48,16 @@ export function delRecord(id) {
   })
 }
 
+export function enableRecords(ids) {
+  return request({
+    url: api_url + '/enable/' + ids,
+    method: 'put'
+  })
+}
+
+export function disableRecords(ids) {
+  return request({
+    url: api_url + '/disable/' + ids,
+    method: 'put'
+  })
+}
