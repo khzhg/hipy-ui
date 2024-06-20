@@ -254,14 +254,14 @@
             </el-radio>
 
           </el-radio-group>
-<!--          <el-select v-model="form.status">-->
-<!--            <el-option-->
-<!--              v-for="dict in statusOptions"-->
-<!--              :key="dict.value"-->
-<!--              :label="dict.label"-->
-<!--              :value="dict.value"-->
-<!--            />-->
-<!--          </el-select>-->
+          <!--          <el-select v-model="form.status">-->
+          <!--            <el-option-->
+          <!--              v-for="dict in statusOptions"-->
+          <!--              :key="dict.value"-->
+          <!--              :label="dict.label"-->
+          <!--              :value="dict.value"-->
+          <!--            />-->
+          <!--          </el-select>-->
         </el-form-item>
 
         <el-form-item label="匹配模式" prop="mode">
@@ -273,14 +273,14 @@
             >{{ dict.label }}
             </el-radio>
           </el-radio-group>
-<!--          <el-select v-model="form.mode">-->
-<!--            <el-option-->
-<!--              v-for="dict in matchOptions"-->
-<!--              :key="dict.value"-->
-<!--              :label="dict.label"-->
-<!--              :value="dict.value"-->
-<!--            />-->
-<!--          </el-select>-->
+          <!--          <el-select v-model="form.mode">-->
+          <!--            <el-option-->
+          <!--              v-for="dict in matchOptions"-->
+          <!--              :key="dict.value"-->
+          <!--              :label="dict.label"-->
+          <!--              :value="dict.value"-->
+          <!--            />-->
+          <!--          </el-select>-->
         </el-form-item>
 
       </el-form>
@@ -334,9 +334,10 @@ export default {
       queryParams: {
         page: 1,
         page_size: 20,
-        name: undefined,
         code: undefined,
+        name: undefined,
         reg: undefined,
+        status: undefined,
         mode: undefined,
       },
       // 表单参数
@@ -347,7 +348,8 @@ export default {
           {required: true, message: '订阅名称不能为空', trigger: 'blur'}
         ],
         code: [
-          {required: true, message: '订阅代码不能为空', trigger: 'blur'}
+          {required: true, message: '订阅代码不能为空', trigger: 'blur'},
+          {min: 6, message: "最小长度为6位字符", trigger: "blur"}
         ],
         reg: [
           {required: true, message: '正则表达式字符串不能为空', trigger: 'blur'}
@@ -443,10 +445,11 @@ export default {
     reset() {
       this.form = {
         id: undefined,
-        name: undefined,
         code: undefined,
+        name: undefined,
         reg: undefined,
-        due_time: undefined,
+        status: undefined,
+        mode: undefined,
       }
       this.resetForm('form')
     },
@@ -460,9 +463,10 @@ export default {
       this.queryParams = {
         page: 1,
         page_size: 20,
-        name: undefined,
         code: undefined,
+        name: undefined,
         reg: undefined,
+        status: undefined,
         mode: undefined,
       }
       this.handleQuery()
@@ -472,16 +476,16 @@ export default {
       this.reset()
       let default_value = {
         code: generateRandomString(6),
-        // status: 1,
-        // mode: 0,
+        status: 1,
+        mode: 0,
         reg: '.*'
       };
       Object.assign(this.form, default_value);
-      this.open = true
-      this.title = '添加订阅'
-      this.statusOptions.forEach(item => {
-        if (item.is_default) this.form.status = item.value
-      });
+      this.open = true;
+      this.title = '添加订阅';
+      // this.statusOptions.forEach(item => {
+      //   if (item.is_default) this.form.status = item.value
+      // });
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
